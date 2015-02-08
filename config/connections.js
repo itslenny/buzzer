@@ -68,7 +68,7 @@ module.exports.connections = {
   myMongoServerProd:{
     module   : 'sails-mongo',
     url      : process.env.MONGOLAB_URI
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
