@@ -31,7 +31,8 @@ module.exports.policies = {
   RoomController:['sessionAuth'],
   BuzzController:{
     reset:['sessionAuth'],
-    do:true
+    do:true,
+    '*':['sessionAuth']
   },
   UserController:['sessionAuth']
 
