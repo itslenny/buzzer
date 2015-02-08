@@ -26,15 +26,14 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': true
-  // ,
-  // AuthController:true,
-  // RoomController:true,//['sessionAuth'],
-  // BuzzController:{
-  //   reset:['sessionAuth'],
-  //   do:true,
-  //   '*':true
-  // }
+  '*': false,
+  AuthController:true,
+  RoomController:['sessionAuth'],
+  BuzzController:{
+    reset:['sessionAuth'],
+    do:true
+  },
+  UserController:['sessionAuth']
 
   /***************************************************************************
   *                                                                          *
