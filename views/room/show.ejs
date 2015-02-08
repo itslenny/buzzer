@@ -1,0 +1,27 @@
+<script>
+    window.ROOM_ID='<%= req.params.room %>';
+</script>
+<div ng-app="RoomApp">
+    <div ng-controller="RoomCtrl" class="container">
+        
+        <div class="row">
+            <h1>
+                {{roomid}}
+                <button ng-click="resetRoom()" class="btn btn-warning pull-right">Reset</button>
+            </h1>
+            Size: <input type="number" ng-model="roomSize">
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="text-center">Finished</h3>
+                <canvas class="chart chart-doughnut" data="fData"
+                  labels="fLabels" legend="true"></canvas>             
+            </div>
+            <div class="col-sm-6">
+                <h3 class="text-center">Understanding</h3>
+                <canvas class="chart chart-doughnut" data="uData"
+                  labels="uLabels" legend="true"></canvas>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+-------------
+-- Notes ----
+-------------
+
+Associate rooms and buzzes
+
+On create of "buzz"
+    - find room
+    - room.findBuzz / addBuzz
+
+Add Auth (for teachers)
+    - user table
