@@ -17,23 +17,14 @@ module.exports = {
                 bcrypt.compare(req.body.password,user.password,function(err,match){
                     if(match){
                         req.session.user=user;
-                        res.send({
-                            result:true,
-                            user:user
-                        });                        
+                        res.redirect('/room/mine');                        
                     }else{
-                        res.send({
-                            result:false,
-                            error:"Invalid password."
-                        });
+                        res.redirect('/login?error=true');
                     }
                     
                 });
             }else{
-                res.send({
-                    result:false,
-                    error:"Unknown e-mail address."
-                });
+                res.redirect('/login?error=true');
             }
         })
     },

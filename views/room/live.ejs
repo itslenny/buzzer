@@ -1,15 +1,19 @@
 <script>
-    window.ROOM_ID='<%= req.params.room %>';
+    window.ROOM_DATA=<%- roomData %>;
+
 </script>
 <div ng-app="RoomApp">
     <div ng-controller="RoomCtrl" class="container">
         
         <div class="row">
             <h1>
-                {{roomid}}
+                {{room.name}}
                 <button ng-click="resetRoom()" class="btn btn-warning pull-right">Reset</button>
             </h1>
-            Size: <input type="number" ng-model="roomSize">
+            <div class="form-group col-sm-2" ng-class="{'has-error':invalidSize}">
+                <label>Room Size</label>
+                <input type="number" class="form-control" ng-model="roomSize">
+            </div>
         </div>
         <div class="row">
             <div class="col-sm-6">

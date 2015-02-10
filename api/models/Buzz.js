@@ -8,10 +8,7 @@
 module.exports = {
 
   attributes: {
-    room:{
-        type:"string",
-        index:true
-    },
+
     number:{
         type:"integer"
     },
@@ -23,7 +20,14 @@ module.exports = {
         type:"string",
         defaultsTo:'new',
         enum:['archived','new']
+    },
+
+    ////// associations /////
+
+    room:{
+        model:'Room'
     }
+
   }
 
 };

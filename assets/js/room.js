@@ -2,27 +2,36 @@ var roomApp = angular.module('RoomApp',['chart.js']);
 
 roomApp.controller('RoomCtrl',['$scope',function($scope){
     var buzzes=[];
-    $scope.roomid = window.ROOM_ID;
+    $scope.room = window.ROOM_DATA;
     $scope.test="Lenny";
-    $scope.roomSize=17;
+    $scope.roomSize=$scope.room.size;
 
     $scope.resetRoom = function(){
-        io.socket.get('/buzz/reset/'+window.ROOM_ID,function(){
+        io.socket.get('/buzz/reset/'+$scope.room.id,function(){
                 //location.reload();
                 initCharts();
             })
     }
 
-    io.socket.on('buzz',function(event){
-        if(event.data && event.data.room && event.data.room==window.ROOM_ID){
-            buzzes.push(event.data);
-            updateCharts();
-        }
+    $scope.$watch('roomSize',function(){
+        var roomSize = parseInt($scope.roomSize);
+        if(roomSize != $scope.roomSize || ($scope.fData && roomSize < $scope.fData[1])){
+            $scope.invalidSize=true;
+            return;
+        } 
+        $scope.invalidSize=false;
+        if($scope.fData) updatePending();
+        io.socket.put('/room/'+$scope.room.id,{size:roomSize},function(data,jwrs){
+            //do nothing.
+        });
+    });
 
+    io.socket.on('newbuzz',function(newBuzz){
+        buzzes.push(newBuzz);
+        updateCharts();
     })  
 
-
-    io.socket.get('/buzz?status=new&room='+window.ROOM_ID,function(data,jwrs){
+    io.socket.get('/room/watch/'+$scope.room.id,function(data,jwrs){
         buzzes=data;
         initCharts();
         updateCharts();
@@ -37,6 +46,10 @@ roomApp.controller('RoomCtrl',['$scope',function($scope){
         });
     }
 
+    function updatePending(){
+        $scope.fData[0] = $scope.roomSize - $scope.fData[1];
+    }
+
     function updateCharts(){
         $scope.$apply(function(){
             buzzes.forEach(function(item){
@@ -49,11 +62,11 @@ roomApp.controller('RoomCtrl',['$scope',function($scope){
                     //     $scope.uData.push(1);
                 }
 
-                if($scope.fData[0] > 0){
-                    $scope.fData[0]-=1;
+                if($scope.fData[1] < $scope.roomSize){
                     $scope.fData[1]+=1;
                 }
             });
+            updatePending();
             buzzes=[];
         });
     }

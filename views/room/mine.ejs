@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-2">
+            <h3>Rooms</h3>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Size</th>
+                    <th>Created</th>
+                </tr>
+                <% if(rooms){ %>
+                    <% rooms.forEach(function(room){ %>
+                        <tr>
+                            <td><a href="/room/live/<%= room.id %>"><%= room.name %></a></td>
+                            <td><%= room.size %></td>
+                            <td><%= room.createdAt %></td>
+                        </tr>
+                    <% }); %>
+                <% }else{ %>
+                    <tr><td colspan="3">You have no rooms.</td></tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+</div>

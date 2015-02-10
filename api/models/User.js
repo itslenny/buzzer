@@ -27,6 +27,13 @@ module.exports = {
         required: true
     },
 
+    //ASSOCIATIONS /////
+    rooms:{
+        collection:'Room',
+        via:'users'
+    },  
+
+    //CLASS METHODS ///////
     getFullName: function(){
         return this.firstName+' '+this.lastName;
     },

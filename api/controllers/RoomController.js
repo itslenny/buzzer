@@ -7,12 +7,32 @@
 
 module.exports = {
 	index:function(req,res){
-        res.send('nah.. no list')
+        res.send('nah... no list')
     },
-    show:function(req,res){
-        if(!req.params.room) return res.send('Invalid room');
-        Buzz.find({room:req.params.room,status:'new'}).exec(function(err,data){
-            res.view('room/show',{buzzes:data,roomId:req.params.room});
+    live:function(req,res){
+        if(!req.params.roomid) return res.send('Invalid room');
+        Room.findOne(req.params.roomid).exec(function(err,room){
+            if(!room) return res.send('Invalid room.');
+            res.view('room/live',{roomData:JSON.stringify(room)});
+        });
+    },
+    watch:function(req,res){
+        Room.findOne(req.params.roomid)
+        .populate('buzzes')
+        .exec(function(err,room){
+            if(room){
+                sails.sockets.join(req.socket, room.id);
+                res.send(room.buzzes);
+            }else{
+                res.send([]);
+            }
+        });
+    },
+    mine:function(req,res){
+        User.findOne(req.session.user.id)
+        .populate('rooms')
+        .exec(function(err,user){
+            res.view('room/mine',{rooms:user.rooms});
         });
     }
 };

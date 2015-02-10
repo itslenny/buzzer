@@ -16,6 +16,18 @@ module.exports = {
     size:{
         type:'integer',
         required:true
+    },
+
+    ////// associations /////
+
+    buzzes:{
+        collection:'Buzz',
+        via:'room'
+    },
+
+    users:{
+        collection:'User',
+        via:'rooms'
     }
   }
 };

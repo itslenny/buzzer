@@ -22,32 +22,17 @@
 
 module.exports.routes = {
 
-  /***************************************************************************
-  *                                                                          *
-  * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
-  * etc. depending on your default view engine) your home page.              *
-  *                                                                          *
-  * (Alternatively, remove this and add an `index.html` file in your         *
-  * `assets` directory)                                                      *
-  *                                                                          *
-  ***************************************************************************/
-
   '/': {
     view: 'homepage'
   },
-  '/buzz/do/:room/:who/:num?':'BuzzController.do',
-  '/buzz/reset/:room':'BuzzController.reset',
-  '/room/:room':'RoomController.show',
+  'get /buzz/do/:room/:who/:num?':'BuzzController.do',
+  'get /buzz/reset/:roomid':'BuzzController.reset',
+
+  'get /room/live/:roomid':'RoomController.live',
+  'get /room/mine':'RoomController.mine',
+  '/room/watch/:roomid':'RoomController.watch',
+
   'post /login':'AuthController.login',
   'get /login':'AuthController.showLogin'
-  /***************************************************************************
-  *                                                                          *
-  * Custom routes here...                                                    *
-  *                                                                          *
-  *  If a request to a URL doesn't match any of the custom routes above, it  *
-  * is matched against Sails route blueprints. See `config/blueprints.js`    *
-  * for configuration options and examples.                                  *
-  *                                                                          *
-  ***************************************************************************/
 
 };
