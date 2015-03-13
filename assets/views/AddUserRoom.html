@@ -1,0 +1,16 @@
+<form class="form" ng-submit="save()">
+    <div class="modal-header">
+        <h3 class="modal-title">Add user to a room</h3>
+    </div>
+    <div class="modal-body">
+            <div class="form-group">
+                <label>Select a user</label>
+                <select ng-model="user" ng-options="user.email for user in users">
+                </select>
+            </div>       
+    </div>
+    <div class="modal-footer">
+        <button ng-click="cancel()" type="button" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Add User</button>
+    </div>
+</form>

@@ -31,4 +31,24 @@ buzzerApp.controller('RoomIndexCtrl',['$scope','$modal','$location','$http','Use
         })
     }
 
+    
+
+    $scope.addUser=function(idx){
+        $modal.open({
+            controller:'AddUserRoomModalCtrl',
+            templateUrl:'/views/AddUserRoom.html'
+        }).result.then(function(user){
+            $http.post('/api/user/'+user.id+'/rooms/add/'+$scope.rooms[idx].id).success(function(data){
+                if(data){
+                    alert('User added to room.');
+                }
+            }).error(function(err){
+                alert('error see console');
+                console.log(err);
+            });
+        },function(reason){
+
+        })
+    }    
+
 }]);

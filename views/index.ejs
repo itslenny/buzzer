@@ -1,3 +1,12 @@
 <div ng-app="buzzerApp" class="container">
+    <div ng-controller="NavBarCtrl">
+        <div ng-if="user" class="pull-right">
+            Logged in as {{user.firstName || user.email}}
+            &bull;
+            <a href="" ng-click="createUser()">Create User</a>            
+            &bull;
+            <a href="" ng-click="logout()">Logout</a>            
+        </div>
+    </div>
     <ng-view></ng-view>
 </div>
