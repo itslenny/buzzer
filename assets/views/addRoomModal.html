@@ -1,0 +1,20 @@
+<form class="form" ng-submit="save()">
+    <div class="modal-header">
+        <h3 class="modal-title">Add Room</h3>
+    </div>
+    <div class="modal-body">
+            <div class="form-group">
+                <label>Room / Class Name</label>
+                <input ng-model="roomInfo.name" type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Size</label>
+                <input ng-model="roomInfo.size" type="number" class="form-control" required>
+            </div>        
+        
+    </div>
+    <div class="modal-footer">
+        <button ng-click="cancel()" type="button" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
