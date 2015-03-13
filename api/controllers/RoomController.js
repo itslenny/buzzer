@@ -6,9 +6,6 @@
  */
 
 module.exports = {
-	index:function(req,res){
-        res.send('nah... no list')
-    },
     live:function(req,res){
         if(!req.params.roomid) return res.send('Invalid room');
         Room.findOne(req.params.roomid).exec(function(err,room){

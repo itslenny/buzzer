@@ -14,6 +14,8 @@ buzzerApp.controller('RoomShowCtrl',['$scope','$location','$routeParams','UserSe
     }
 
     io.socket.on('newbuzz',function(newBuzz){
+        console.log('newBuzz',newBuzz);
+        if(newBuzz.room != $scope.room.id) return;
         $scope.$evalAsync(function(){
             $scope.room.buzzes.push(newBuzz);
             updateCharts();
