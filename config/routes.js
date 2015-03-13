@@ -22,8 +22,6 @@
 
 module.exports.routes = {
 
-
-
   //root route //////////////////////////////
   '/': 'PageController.index',
 
@@ -40,13 +38,6 @@ module.exports.routes = {
   'post /api/auth':'AuthController.login',
   'get /api/auth':'AuthController.check',
   'delete /api/auth':'AuthController.logout',
-
-
-
-  //OLD ROUTES
-  'get /api/room/live/:roomid':'RoomController.live',
-  'get /api/room/mine':'RoomController.mine',
-
 
   //catch-all route for angular HTML5 mode
   "get *":{

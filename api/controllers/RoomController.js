@@ -6,13 +6,6 @@
  */
 
 module.exports = {
-    live:function(req,res){
-        if(!req.params.roomid) return res.send('Invalid room');
-        Room.findOne(req.params.roomid).exec(function(err,room){
-            if(!room) return res.send('Invalid room.');
-            res.view('room/live',{roomData:JSON.stringify(room)});
-        });
-    },
     watch:function(req,res){
         Room.findOne(req.params.roomid)
         .populate('buzzes',{where:{status:'new'}})
@@ -23,13 +16,6 @@ module.exports = {
             }else{
                 res.send(404,{error:'Room not found.'});
             }
-        });
-    },
-    mine:function(req,res){
-        User.findOne(req.session.user.id)
-        .populate('rooms')
-        .exec(function(err,user){
-            res.view('room/mine',{rooms:user.rooms});
         });
     }
 };
