@@ -8,25 +8,30 @@
 var bcrypt=require('bcrypt');
 
 module.exports = {
-    showLogin:function(req,res){
-        res.view('login');
-    },
 	login:function(req,res){
-        User.findOne({email:req.body.email}).then(function(user){
+        User.findOne({where:{email:req.body.email}})
+        .exec(function(err,user){
+            if(err) return res.send(err);
             if(user){
                 bcrypt.compare(req.body.password,user.password,function(err,match){
+                    // if(err) return res.send(err);
                     if(match){
                         req.session.user=user;
-                        res.redirect('/room/mine');                        
+                        res.send({result:true,user:user});
                     }else{
-                        res.redirect('/login?error=true');
+                       res.send({
+                            result:false,
+                            error:'Incorrect password.'
+                        });
                     }
-                    
-                });
+                })
             }else{
-                res.redirect('/login?error=true');
+                res.send({
+                    result:false,
+                    error:'User not found. Please signup.'
+                });
             }
-        })
+        });
     },
     check:function(req,res){
         res.send({

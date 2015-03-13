@@ -27,6 +27,7 @@ module.exports.policies = {
   ***************************************************************************/
 
   '*': false,
+  PageController:true,
   AuthController:true,
   RoomController:['sessionAuth'],
   BuzzController:{

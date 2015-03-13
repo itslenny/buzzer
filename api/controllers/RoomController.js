@@ -18,13 +18,13 @@ module.exports = {
     },
     watch:function(req,res){
         Room.findOne(req.params.roomid)
-        .populate('buzzes')
+        .populate('buzzes',{where:{status:'new'}})
         .exec(function(err,room){
             if(room){
                 sails.sockets.join(req.socket, room.id);
-                res.send(room.buzzes);
+                res.send(room);
             }else{
-                res.send([]);
+                res.send(404,{error:'Room not found.'});
             }
         });
     },

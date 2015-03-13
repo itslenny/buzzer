@@ -22,17 +22,38 @@
 
 module.exports.routes = {
 
-  '/': {
-    view: 'homepage'
-  },
-  'get /buzz/do/:room/:who/:num?':'BuzzController.do',
-  'get /buzz/reset/:roomid':'BuzzController.reset',
 
-  'get /room/live/:roomid':'RoomController.live',
-  'get /room/mine':'RoomController.mine',
-  '/room/watch/:roomid':'RoomController.watch',
 
-  'post /login':'AuthController.login',
-  'get /login':'AuthController.showLogin'
+  //root route //////////////////////////////
+  '/': 'PageController.index',
+
+  //API routes //////////////////////////////
+
+  // buzz socket routes
+  'get /api/buzz/do/:room/:who/:num?':'BuzzController.do',
+  'get /api/buzz/reset/:roomid':'BuzzController.reset',
+
+  // room socket routes
+  '/api/room/watch/:roomid':'RoomController.watch',
+
+  // auth api routes
+  'post /api/auth':'AuthController.login',
+  'get /api/auth':'AuthController.check',
+  'delete /api/auth':'AuthController.logout',
+
+
+
+  //OLD ROUTES
+  'get /api/room/live/:roomid':'RoomController.live',
+  'get /api/room/mine':'RoomController.mine',
+
+
+  //catch-all route for angular HTML5 mode
+  "get *":{
+    controller:"PageController",
+    action:"index",
+    skipAssets: true,
+    skipRegex: /^\/api\/.*$/
+  }
 
 };

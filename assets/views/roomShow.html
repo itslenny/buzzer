@@ -1,0 +1,22 @@
+<div class="row">
+    <h1>
+        {{room.name}}
+        <button ng-click="resetRoom()" class="btn btn-warning pull-right">Reset</button>
+    </h1>
+    <div class="form-group col-sm-2" ng-class="{'has-error':invalidSize}">
+        <label>Room Size</label>
+        <input type="number" class="form-control" ng-model="room.size">
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <h3 class="text-center">Finished</h3>
+        <canvas class="chart chart-doughnut" data="fData"
+          labels="fLabels" colours="fColors" legend="true"></canvas>  
+    </div>
+    <div class="col-sm-6">
+        <h3 class="text-center">Understanding</h3>
+        <canvas class="chart chart-doughnut" data="uData"
+          labels="uLabels" colours="uColors" legend="true"></canvas>
+    </div>
+</div>

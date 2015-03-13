@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h1>
+            Your Rooms
+            <button class="btn btn-success pull-right">+</button>
+        </h1>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Size</th>
+                <th> </th>
+            </tr>
+            <tr ng-repeat="room in rooms track by $index">
+                    <td>{{room.name}}</td>
+                    <td>{{room.size}}</td>
+                    <td><a ng-href="/room/{{room.id}}" class="btn btn-xs btn-primary">Enter Room</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
