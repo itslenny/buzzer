@@ -20,7 +20,7 @@ module.exports = {
     },
     lastName:{
         type:"string"
-    },    
+    },
     password:{
         type:"string",
         minLength: 6,
@@ -31,7 +31,7 @@ module.exports = {
     rooms:{
         collection:'Room',
         via:'users'
-    },  
+    },
 
     //CLASS METHODS ///////
     getFullName: function(){
@@ -53,6 +53,19 @@ module.exports = {
         values.password=hash;
         cb();
     });
+  },
+
+  beforeUpdate:function(values,cb){
+    if(values.password && values.password.substr(7) != '$2a$10$'){
+        bcrypt.hash(values.password,10,function(err,hash){
+            if(err) return cb(err);
+            values.password=hash;
+            cb();
+        });
+    }else{
+        cb();
+    }
+
   }
 
 

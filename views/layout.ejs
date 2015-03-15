@@ -11,9 +11,9 @@
 
     <!-- NOTE: styles between the following tags are auto-loaded -->
     <!--STYLES-->
-    <link rel="stylesheet" href="/styles/angular-chart.css">
-    <link rel="stylesheet" href="/styles/importer.css">
-    <link rel="stylesheet" href="/styles/room.css">
+    <link rel="stylesheet" href="/styles/angular-chart.css?v=0.1.1">
+    <link rel="stylesheet" href="/styles/importer.css?v=0.1.1">
+    <link rel="stylesheet" href="/styles/room.css?v=0.1.1">
     <!--STYLES END-->
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1/Chart.min.js"></script>
@@ -23,18 +23,23 @@
 
     <!-- NOTE: scripts between the following tags are auto-loaded -->
     <!--SCRIPTS-->
-    <script src="/js/dependencies/sails.io.js"></script>
-    <script src="/js/dependencies/angular-chart.js"></script>
-    <script src="/js/app/app.js"></script>
-    <script src="/js/app/controllers/LoginCtrl.js"></script>
-    <script src="/js/app/controllers/NavBarCtrl.js"></script>
-    <script src="/js/app/controllers/RoomIndexCtrl.js"></script>
-    <script src="/js/app/controllers/RoomShowCtrl.js"></script>
-    <script src="/js/app/controllers/modals/AddRoomModalCtrl.js"></script>
-    <script src="/js/app/controllers/modals/AddUserModal.js"></script>
-    <script src="/js/app/controllers/modals/AddUserRoomModalCtrl.js"></script>
-    <script src="/js/app/services/UserService.js"></script>
-    <!--SCRIPTS END-->    
+    <script src="/js/dependencies/sails.io.js?v=0.1.1"></script>
+    <script src="/js/dependencies/angular-chart.js?v=0.1.1"></script>
+    <script src="/js/app/app.js?v=0.1.1"></script>
+    <script src="/js/app/controllers/LoginCtrl.js?v=0.1.1"></script>
+    <script src="/js/app/controllers/NavBarCtrl.js?v=0.1.1"></script>
+    <script src="/js/app/controllers/RoomIndexCtrl.js?v=0.1.1"></script>
+    <script src="/js/app/controllers/RoomShowCtrl.js?v=0.1.1"></script>
+    <script src="/js/app/controllers/modals/AddRoomModalCtrl.js?v=0.1.1"></script>
+    <script src="/js/app/controllers/modals/AddUserModal.js?v=0.1.1"></script>
+    <script src="/js/app/controllers/modals/AddUserRoomModalCtrl.js?v=0.1.1"></script>
+    <script src="/js/app/controllers/modals/UserChangePasswordModalCtrl.js?v=0.1.1"></script>
+    <script src="/js/app/services/UserService.js?v=0.1.1"></script>
+    <!--SCRIPTS END-->
+
+    <script>
+        window.PACKAGE_VERSION = "<%= res.locals.version %>";
+    </script>
   </head>
 
   <body>

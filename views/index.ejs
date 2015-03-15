@@ -3,9 +3,11 @@
         <div ng-if="user" class="pull-right">
             Logged in as {{user.firstName || user.email}}
             &bull;
-            <a href="" ng-click="createUser()">Create User</a>            
+            <a href="" ng-click="changePassword()">Change Password</a>
             &bull;
-            <a href="" ng-click="logout()">Logout</a>            
+            <a href="" ng-click="createUser()">Create User</a>
+            &bull;
+            <a href="" ng-click="logout()">Logout</a>
         </div>
     </div>
     <ng-view></ng-view>

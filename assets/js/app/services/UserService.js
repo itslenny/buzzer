@@ -10,6 +10,16 @@ buzzerApp.factory('UserService',['$http','$location',function($http,$location){
                 callback(err);
             });
         },
+        update:function(userData,callback){
+            var self=this;
+            if(!self.currentUser) return callback({error:'User not logged in'});
+            $http.put('/api/user/'+self.currentUser.id,userData)
+            .success(function(data){
+                callback(null,data);
+            }).error(function(err){
+                callback(err);
+            });
+        },
         login: function(loginData,callback){
             var self = this;
             $http.post('/api/auth',loginData)
@@ -21,7 +31,7 @@ buzzerApp.factory('UserService',['$http','$location',function($http,$location){
                     self.currentUser=false;
                     callback(data);
                 }
-                
+
             }).error(function(err){
                 callback(err);
             });

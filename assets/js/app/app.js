@@ -6,20 +6,20 @@ buzzerApp.config(['$routeProvider','$locationProvider','$httpProvider', function
     $routeProvider
         .when('/',{
             template:'Loading...'
-        })        
+        })
         .when('/login', {
             controller:'LoginCtrl',
-            templateUrl:'/views/login.html'
+            templateUrl:'/views/login.html?v='+window.PACKAGE_VERSION
         })
         .when('/room', {
             controller:'RoomIndexCtrl',
-            templateUrl:'/views/roomIndex.html'
+            templateUrl:'/views/roomIndex.html?v='+window.PACKAGE_VERSION
         })
         .when('/room/:id', {
             controller:'RoomShowCtrl',
-            templateUrl:'/views/roomShow.html'
+            templateUrl:'/views/roomShow.html?v='+window.PACKAGE_VERSION
         })
-        .otherwise({redirectTo: '/Error_404'});
+        .otherwise({redirectTo: '/'});
 }]);
 
 buzzerApp.run(['UserService','$location',function(UserService,$location){

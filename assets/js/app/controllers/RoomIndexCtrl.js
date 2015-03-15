@@ -16,7 +16,7 @@ buzzerApp.controller('RoomIndexCtrl',['$scope','$modal','$location','$http','Use
     $scope.addRoom=function(){
         $modal.open({
             controller:'AddRoomModalCtrl',
-            templateUrl:'/views/addRoomModal.html'
+            templateUrl:'/views/addRoomModal.html?v='+window.PACKAGE_VERSION
         }).result.then(function(roomInfo){
             $http.post('/api/user/'+uid+'/rooms',roomInfo).success(function(data){
                 if(data){
@@ -31,12 +31,12 @@ buzzerApp.controller('RoomIndexCtrl',['$scope','$modal','$location','$http','Use
         })
     }
 
-    
+
 
     $scope.addUser=function(idx){
         $modal.open({
             controller:'AddUserRoomModalCtrl',
-            templateUrl:'/views/AddUserRoom.html'
+            templateUrl:'/views/AddUserRoom.html?v='+window.PACKAGE_VERSION
         }).result.then(function(user){
             $http.post('/api/user/'+user.id+'/rooms/add/'+$scope.rooms[idx].id).success(function(data){
                 if(data){
@@ -49,6 +49,6 @@ buzzerApp.controller('RoomIndexCtrl',['$scope','$modal','$location','$http','Use
         },function(reason){
 
         })
-    }    
+    }
 
 }]);

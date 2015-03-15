@@ -1,7 +1,8 @@
-module.exports = {
+var pkg = require('../../package.json');
 
-    // GET / -- root route 
+module.exports = {
+    // GET / -- root route
     index:function(req,res){
-        res.view('index.ejs')
+        res.view('index.ejs',{version:pkg.version})
     }
 }
