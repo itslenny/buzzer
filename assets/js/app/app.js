@@ -5,7 +5,6 @@ buzzerApp.config(['$routeProvider','$locationProvider','$httpProvider', function
 
     $routeProvider
         .when('/',{
-
             template:'Loading...'
         })        
         .when('/login', {
@@ -27,8 +26,17 @@ buzzerApp.run(['UserService','$location',function(UserService,$location){
 
     //check auth at start
     UserService.check(function(err,data){
-        if($location.path() != '/login'){
-            UserService.restrictAccess();
+        switch($location.path()){
+            case '/':
+            case '/login':
+                if(UserService.currentUser){
+                    $location.path('/room')
+                }else{
+                    $location.path('/login')
+                }
+                break;
+            default:
+                UserService.restrictAccess();
         }
     });
 }]);;
