@@ -6,9 +6,9 @@ Setup
 2.) distribute alias (below)
 
 #heroku server route
-- Change "WDI-ABC-123" to the name of your room
-export GA_CLASS_NAME="WDI-DC5"
-alias wdibuzz="_wdibuzz(){ curl \"http://wdi-buzzer.herokuapp.com/api/buzz/do/$GA_CLASS_NAME/$(whoami | xargs)_$(ifconfig | grep ether | head -1 | sed 's/[[:space:]|:|ether]*//g')/\$1\" --silent | sed 's/[[:space:]]$//g';return; }; _wdibuzz"
+
+export GA_CLASS_NAME="TeamEskimoKisses" # url escaped
+alias wdibuzz="_wdibuzz(){ curl \"http://wdi-dc-buzzer.herokuapp.com/api/buzz/do/$GA_CLASS_NAME/$(whoami | xargs)_$(ifconfig | grep ether | head -1 | sed 's/[[:space:]|:|ether]*//g')/\$1\" --silent | sed 's/[[:space:]]$//g';return; }; _wdibuzz"
 
 
 
