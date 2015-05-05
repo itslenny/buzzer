@@ -8,7 +8,7 @@ Setup
 #heroku server route
 - Change "WDI-ABC-123" to the name of your room
 
-alias wdibuzz="_wdibuzz(){ curl \"http://wdi-buzzer.herokuapp.com/api/buzz/do/WDI-ABC-123/$(whoami | xargs)_$(ifconfig | grep ether | head -1 | sed 's/[[:space:]|:|ether]*//g')/\$1\" --silent | sed 's/[[:space:]]$//g';return; }; _wdibuzz"
+alias wdibuzz="_wdibuzz(){ curl \"http://wdi-buzzer.herokuapp.com/api/buzz/do/WDI-SEA-02/$(whoami | xargs)_$(ifconfig | grep ether | head -1 | sed 's/[[:space:]|:|ether]*//g')/\$1\" --silent | sed 's/[[:space:]]$//g';return; }; _wdibuzz"
 
 
 
