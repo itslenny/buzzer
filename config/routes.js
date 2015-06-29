@@ -25,6 +25,8 @@ module.exports.routes = {
   //root route //////////////////////////////
   '/': 'PageController.index',
 
+  'get /buzzer':'PageController.buzzer',
+
   //API routes //////////////////////////////
 
   // buzz socket routes
