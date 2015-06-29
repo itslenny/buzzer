@@ -20,9 +20,10 @@ module.exports = {
     myMongoServerProd:{
       module   : 'sails-mongo',
       url      : process.env.MONGOLAB_URI
-    }    
+    }
   },
   models: {
+    migrate: 'safe',
     connection: 'myMongoServerProd'
   }
 

@@ -25,10 +25,11 @@
             // user: 'username',
             // password: 'password',
             database: 'wdi_buzzer'
-        }    
+        }
     },
 
     models: {
+      migrate: 'alter',
       connection: 'myMongoServerDev'
     }
 
